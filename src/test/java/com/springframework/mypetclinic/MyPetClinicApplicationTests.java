@@ -1,4 +1,4 @@
-package athar.springframework.mypetclinic;
+package com.springframework.mypetclinic;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
