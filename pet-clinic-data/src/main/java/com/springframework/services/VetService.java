@@ -1,12 +1,7 @@
 package com.springframework.services;
 
-import java.util.Set;
-
 import com.springframework.model.Vet;
 
-public interface VetService {
+public interface VetService extends CrudService<Vet, Long>{
 
-	Vet findById(Long id);
-	Vet save(Vet vet);
-	Set<Vet> findAll();
 }
