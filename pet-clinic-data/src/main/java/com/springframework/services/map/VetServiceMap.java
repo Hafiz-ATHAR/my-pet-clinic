@@ -4,8 +4,9 @@ import java.util.Set;
 
 import com.springframework.model.Vet;
 import com.springframework.services.CrudService;
+import com.springframework.services.VetService;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long>{
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService{
 
 	@Override
 	public Set<Vet> findAll() {

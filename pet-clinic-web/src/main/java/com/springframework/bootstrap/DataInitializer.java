@@ -1,0 +1,60 @@
+package com.springframework.bootstrap;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import com.springframework.model.Owner;
+import com.springframework.model.Vet;
+import com.springframework.services.OwnerService;
+import com.springframework.services.VetService;
+import com.springframework.services.map.OwnerServiceMap;
+import com.springframework.services.map.VetServiceMap;
+
+@Component
+public class DataInitializer implements CommandLineRunner{
+
+	private final OwnerService ownerService;
+	private final VetService vetService;
+	
+	public DataInitializer() {
+		ownerService = new OwnerServiceMap();
+		vetService = new VetServiceMap();
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		
+		Owner owner1 = new Owner();
+		owner1.setId(1L);
+		owner1.setFirstName("Dan");
+		owner1.setLastName("Brown");
+		
+		ownerService.save(owner1);
+		
+		Owner owner2 = new Owner();
+		owner2.setId(2L);
+		owner2.setFirstName("Jonathan");
+		owner2.setLastName("Nolan");
+		
+		ownerService.save(owner2);
+		
+		System.out.println("Owners Initialized");
+
+		Vet vet1 = new Vet();
+		vet1.setId(1L);
+		vet1.setFirstName("Anthony");
+		vet1.setLastName("Hopkins");
+		
+		
+		vetService.save(vet1);
+		
+		Vet vet2 = new Vet();
+		vet2.setId(2L);
+		vet2.setFirstName("Johnny");
+		vet2.setLastName("Cash");
+		
+		vetService.save(vet2);
+		
+		System.out.println("Vets Initialized");
+	}
+}

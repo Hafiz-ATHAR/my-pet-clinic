@@ -4,8 +4,9 @@ import java.util.Set;
 
 import com.springframework.model.Owner;
 import com.springframework.services.CrudService;
+import com.springframework.services.OwnerService;
 
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements CrudService<Owner, Long>{
+public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService{
 
 	@Override
 	
@@ -31,5 +32,10 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 	@Override
 	public void delete(Owner object) {
 		super.delete(object);
+	}
+
+	@Override
+	public Owner findByLastName(String lastName) {
+		return null;
 	}
 }
