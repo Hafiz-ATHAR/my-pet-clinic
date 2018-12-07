@@ -11,10 +11,12 @@ import com.springframework.model.Pet;
 import com.springframework.model.PetType;
 import com.springframework.model.Speciality;
 import com.springframework.model.Vet;
+import com.springframework.model.Visit;
 import com.springframework.services.OwnerService;
 import com.springframework.services.PetTypeService;
 import com.springframework.services.SpecialitiesService;
 import com.springframework.services.VetService;
+import com.springframework.services.VisitService;
 
 @Component
 public class DataInitializer implements CommandLineRunner{
@@ -23,13 +25,14 @@ public class DataInitializer implements CommandLineRunner{
 	private final VetService vetService;
 	private final PetTypeService petTypeService;
 	private final SpecialitiesService specialitiesService;
-
+	private final VisitService visitService;
 	public DataInitializer(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, 
-			SpecialitiesService specialitiesService) {
+			SpecialitiesService specialitiesService, VisitService visitService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.petTypeService = petTypeService;
 		this.specialitiesService = specialitiesService;
+		this.visitService = visitService;
 	}
 
 	@Override
@@ -79,8 +82,17 @@ public class DataInitializer implements CommandLineRunner{
 		DansPet.setName("Tiger");
 		owner1.getPets().add(DansPet);
 
+		
 		ownerService.save(owner1);
 
+		Visit tigerVisit = new Visit();
+		tigerVisit.setPet(DansPet);
+		tigerVisit.setDate(LocalDate.now());
+		tigerVisit.setDescription("Dark Tiger");
+		
+		visitService.save(tigerVisit);
+		System.out.println("Visit Initialized...");
+		
 		Owner owner2 = new Owner();
 		owner2.setFirstName("Jonathan");
 		owner2.setLastName("Nolan");
