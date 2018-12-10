@@ -40,7 +40,6 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
 		<!-- webjars -->
 		<dependency>
 			<groupId>org.webjars</groupId>
